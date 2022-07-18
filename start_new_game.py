@@ -10,6 +10,8 @@ def run():
     pygame.init()
     screen = pygame.display.set_mode((600, 500))
     pygame.display.set_caption("Космические защитники")
+    window_icon = pygame.image.load("images/alien.png")
+    pygame.display.set_icon(window_icon)
     bg_color = (0, 0, 0)
     gun = Gun(screen)
     bullets = Group()
