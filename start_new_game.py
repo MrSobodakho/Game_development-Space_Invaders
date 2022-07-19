@@ -4,15 +4,17 @@ from pygame.sprite import Group
 from stats import Stats
 from scores import Scores
 
+WIDTH = 800
+HEIGHT = 600
+background_img = pygame.image.load("images/background.jpg")
 
-
-def run():
+def run(): #Запуск и инициализация экрана
     pygame.init()
-    screen = pygame.display.set_mode((600, 500))
-    pygame.display.set_caption("Космические защитники")
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Space Invaders")
     window_icon = pygame.image.load("images/alien.png")
     pygame.display.set_icon(window_icon)
-    bg_color = (0, 0, 0)
+#    bg_color = (0, 0, 0)
     gun = Gun(screen)
     bullets = Group()
     inos = Group()
@@ -20,11 +22,11 @@ def run():
     stats = Stats()
     sc = Scores(screen, stats)
 
-    while True:
+    while True: #обработка всех событий (действия на экране)
         controls.events(screen, gun, bullets)
         if stats.run_game:
             gun.update_gun()
-            controls.update(bg_color, screen, stats, sc, gun, inos, bullets)
+            controls.update(background_img, screen, stats, sc, gun, inos, bullets)
             controls.update_bullets(screen, stats, sc, inos, bullets)
             controls.update_inos(stats, screen, sc, gun, inos, bullets)
 
