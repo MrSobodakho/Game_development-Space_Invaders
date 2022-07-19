@@ -22,9 +22,9 @@ def events(screen, gun, bullets):
             elif event.key == pygame.K_a:
                 gun.mleft = False
 
-def update(bg_color, screen, stats, sc, gun, inos, bullets):
+def update(background_img, screen, stats, sc, gun, inos, bullets):
     """обновление экрана"""
-    screen.fill(bg_color)
+    screen.blit(background_img, (0,0))
     sc.show_score()
     for bullet in bullets.sprites():
         bullet.draw_bullet()
